@@ -47,10 +47,8 @@ plot_replicate_cor <- function(df, graphname, param){
   print (paste('correlation for:', graphname, cor(df$rep1, df$rep2)))
   textsize <- 7
   df$density <- get_density(df$rep1, df$rep2, n = 100)
-  p <- ggplot(df,aes(x=rep1, y=rep2))+#, color=density)) +
-    #geom_hex(bins = 70) +
-    #scale_fill_continuous(type = "viridis") +
-    geom_point(size = 0.3, alpha=0.5, color='grey30', pch=16)+
+  p <- ggplot(df,aes(x=rep1, y=rep2)) +
+    geom_point(size=0.6, alpha=0.5, color='grey30', pch=16) +
     theme_cowplot(12) +
     theme(plot.title=element_blank(),
           plot.background = element_rect(fill = "white"),
@@ -99,7 +97,7 @@ t_test <- function(df, class_1, class_2){
 }
 
 df <- read_tsv('result/FP_DMS_fit.tsv') %>%
-  filter(avg_ipt_freq >= 0) %>%
+  filter(avg_ipt_freq >= 0.0001) %>%
   filter(mut != "WT")
 print (nrow(df))
 df_exp <- df %>%

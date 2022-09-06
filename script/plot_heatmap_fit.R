@@ -26,7 +26,7 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
                          breaks=c(-0.5,0.5,0,1,1.5),
                          labels=c('-0.5','0.5','0','1','1.5'),
                          guide="colorbar",
-                         na.value="grey") +
+                         na.value="grey50") +
     theme_cowplot(12) +
     theme(plot.background = element_rect(fill = "white"),
           axis.text=element_text(size=textsize,face="bold",colour = 'black'),
@@ -61,7 +61,7 @@ residues <- unique(df$resi)
 df <- df %>%
   filter(!grepl('silent',mut_class)) %>%
   filter(!grepl('WT',mut_class)) %>%
-  filter(avg_ipt_freq>= 0) %>%
+  filter(avg_ipt_freq>= 0.0001) %>%
   mutate(resi=str_sub(mut,1,-2)) %>%
   mutate(aa=str_sub(mut,-1,-1)) %>%
   filter(aa %in% aa_level) %>%

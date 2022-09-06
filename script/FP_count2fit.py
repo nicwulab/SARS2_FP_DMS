@@ -32,7 +32,7 @@ def wrapper(count_file, freq_cutoff):
     return (df)
 
 def main():
-    freq_cutoff = 0
+    freq_cutoff = 0.0001
     outfile_1 = "result/FP_DMS_fit.tsv"
     outfile_2 = "result/FP_DMS_fit_by_resi.tsv"
     df = wrapper("result/FP_DMS_count_aa.tsv", freq_cutoff)
