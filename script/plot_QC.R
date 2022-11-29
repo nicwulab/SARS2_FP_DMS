@@ -87,11 +87,12 @@ plot_by_class <- function(df, graphname, ylab){
           legend.title=element_text(size=textsize,face="bold"),
           legend.text=element_text(size=textsize,face="bold"),
           legend.position='right') +
-    ylab(ylab)
+    ylab(ylab) +
+    ylim(0,4.6)
   ggsave(graphname, p, height=2, width=2,dpi=3000)
 }
 
-t_test <- function(df, class_1, class_2){
+t_test <- function(df_exp, class_1, class_2){
   p_value <- t.test(filter(df_exp, mut_class==class_1)$score, filter(df_exp, mut_class==class_2)$score)$p.value
   print (paste("p-value of diff between", class_1, 'vs', class_2, ':', p_value))
 }
@@ -101,12 +102,32 @@ df <- read_tsv('result/FP_DMS_fit.tsv') %>%
   filter(mut != "WT")
 print (nrow(df))
 df_exp <- df %>%
-  rename(rep1=fit_Lib1) %>%
-  rename(rep2=fit_Lib2) %>%
-  rename(score=fit)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class.png', 'fitness')
-t_test(df, 'silent', 'nonsense')
-t_test(df, 'silent', 'missense')
-t_test(df, 'missense', 'nonsense')
+  rename(rep1=`fit_P1-Calu3_Rep1`) %>%
+  rename(rep2=`fit_P1-Calu3_Rep2`) %>%
+  rename(score=`fit_P1-Calu3`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3.png', 'fitness')
+t_test(df_exp, 'silent', 'nonsense')
+t_test(df_exp, 'silent', 'missense')
+t_test(df_exp, 'missense', 'nonsense')
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-E6_Rep1`) %>%
+  rename(rep2=`fit_P1-E6_Rep2`) %>%
+  rename(score=`fit_P1-E6`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6.png', 'fitness')
+t_test(df_exp, 'silent', 'nonsense')
+t_test(df_exp, 'silent', 'missense')
+t_test(df_exp, 'missense', 'nonsense')
+
+df_exp <- df %>%
+  rename(rep1=fit_P0_Rep1) %>%
+  rename(rep2=fit_P0_Rep2) %>%
+  rename(score=fit_P0)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P0.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P0.png', 'fitness')
+t_test(df_exp, 'silent', 'nonsense')
+t_test(df_exp, 'silent', 'missense')
+t_test(df_exp, 'missense', 'nonsense')
 #write.table(select(filter(df_exp, mut_class=='missense'), mut, Input_freq, score), 'result/FP_DMS_expression_score.tsv', quote=FALSE, sep="\t", row.names=FALSE)

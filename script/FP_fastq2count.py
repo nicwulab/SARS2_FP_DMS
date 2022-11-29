@@ -42,7 +42,7 @@ def Output(var_dict, outfile):
 
 def main():
     outfile = 'result/FP_DMS_count_nuc.tsv'
-    infiles = glob.glob('fastq_merged/*merged_assembled.fastq')
+    infiles = glob.glob('fastq_merged/*merged.fastq')
     length_roi = 144
     flank_5 = 'TTTGGTGGTTTTAATTTTTCACAAATATTACCA'
     flank_3 = 'AACGGCCTTACTGTTTTGCCACCTTTGCTCACAGATGAAATGATTGCTCAA'

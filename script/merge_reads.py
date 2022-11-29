@@ -3,7 +3,7 @@ import os
 import glob
 
 def main():
-    R1_files  = glob.glob('fastq/*_R1_*')
+    R1_files  = glob.glob('fastq/FPDMS*_R1_*')
     outfolder = 'fastq_merged/'
     for R1_file in R1_files:
         R2_file = R1_file.replace('_R1_','_R2_')

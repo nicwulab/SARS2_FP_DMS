@@ -20,11 +20,11 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
     mutate(x=x-min(x)+1)
   p <-  ggplot() +
     geom_tile(data=fitness_table,aes(x=resi,y=aa,fill=parameter)) +
-    scale_fill_gradientn(colours=c("blue","blue","white","red"),
-                         limits=c(-0.5,1.5),
-                         values=rescale(c(-0.5,0,1,1.5)),
-                         breaks=c(-0.5,0.5,0,1,1.5),
-                         labels=c('-0.5','0.5','0','1','1.5'),
+    scale_fill_gradientn(colours=c("blue","blue","white","white","red","red"),
+                         limits=c(-1,4.6),
+                         values=rescale(c(-1, 0, 0.8, 1.2, 2, 4.6)),
+                         breaks=c(-1,0,1,2,3,4),
+                         labels=c('-1','0','1','2','3','4'),
                          guide="colorbar",
                          na.value="grey50") +
     theme_cowplot(12) +
@@ -46,6 +46,17 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
     xlab("") +
     ylab("amino acid")
 }
+
+wrapper <- function(df_plot, graphname){
+  df_plot <- df_plot %>%
+    mutate(parameter=case_when(str_sub(resi,1,1)==aa ~ 1, TRUE ~ parameter)) %>% #Set WT parameter (usually 0 or 1)
+    mutate(Mutation=paste(resi,aa,sep='')) %>%
+    select(Mutation, avg_ipt_freq, resi, Pos, aa, parameter) #Variable name for input freq may need to chance
+  print (range(df_plot$parameter,na.rm=T))
+  p1 <- plot_score_heatmap(df_plot, WTresibox, 808, 855, legend_title)
+  p <- grid.arrange(p1, nrow=1)
+  ggsave(graphname,p,width=4, height=2, dpi=300) #Output file may need to adjust
+  }
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
 
@@ -70,11 +81,7 @@ df <- df %>%
   complete(resi, aa) %>%
   mutate(Pos=str_sub(resi,2,-1)) %>%
   mutate(Pos=as.numeric(as.character(Pos))) %>%
-  arrange(Pos) %>%
-  mutate(parameter=fit) %>% #adjust to select the parameter of interest
-  mutate(parameter=case_when(str_sub(resi,1,1)==aa ~ 1, TRUE ~ parameter)) %>% #Set WT parameter (usually 0 or 1)
-  mutate(Mutation=paste(resi,aa,sep='')) %>%
-  select(Mutation, avg_ipt_freq, resi, Pos, aa, parameter) #Variable name for input freq may need to chance
+  arrange(Pos)
 
 WTresibox  <- df %>%
   select(resi,Pos) %>%
@@ -84,9 +91,13 @@ WTresibox  <- df %>%
   mutate(y=match(WT_resi,aa_level)) %>%
   select(resi,WT_resi,Pos,x, y)
 
-print (range(df$parameter,na.rm=T))
-
 legend_title <- "fitness"
-p1 <- plot_score_heatmap(df, WTresibox, 808, 855, legend_title)
-p <- grid.arrange(p1, nrow=1)
-ggsave('graph/FP_fit_heatmap.png',p,width=4, height=2, dpi=300)
+
+df_plot <- df %>% mutate(parameter=fit_P0) 
+wrapper(df_plot, 'graph/FP_fit_P0_heatmap.png')
+
+df_plot <- df %>% mutate(parameter=`fit_P1-Calu3`) 
+wrapper(df_plot, 'graph/FP_fit_P1-Calu3_heatmap.png')
+
+df_plot <- df %>% mutate(parameter=`fit_P1-E6`) 
+wrapper(df_plot, 'graph/FP_fit_P1-E6_heatmap.png')
