@@ -31,7 +31,7 @@
 ### Calculating fitness from DMS data
 1. Merge overlapping paired-end reads using [PEAR](https://github.com/tseemann/PEAR)   
 ``pear -f [FASTQ FILE FOR FORWARD READ] -r [FASTQ FILE FOR FORWARD READ] -o [OUTPUT FASTQ FILE]``   
-    - Output files should be placed in the fastq_merged/ folder and named as described in [./doc/filename_merged_fastq.txt](./doc/filename_merged_fastq.txt)
+    - Output files should be placed in the fastq_merged/ folder and named as described in [./doc/filename_merged_fastq.tsv](./doc/filename_merged_fastq.tsv)
 
 2. Counting variants based on nucleotide sequences   
 ``python3 script/FP_fastq2count.py``   
