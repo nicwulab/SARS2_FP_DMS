@@ -62,12 +62,18 @@
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/NTD_DMS_fit.tsv)
     - Output files:
-      - [./graph/QC_replicate_fit.png](./graph/QC_replicate_fit.png)
-      - [./graph/QC_fit_by_class.png](./graph/QC_fit_by_class.png)
+      - [./graph/QC_replicate_fit_P0.png](./graph/QC_replicate_fit_P0.png)
+      - [./graph/QC_replicate_fit_P1-E6.png](./graph/QC_replicate_fit_P1-E6.png)
+      - [./graph/QC_replicate_fit_P1-Calu3.png](./graph/QC_replicate_fit_P1-Calu3.png)
+      - [./graph/QC_fit_by_class_P0.png](./graph/QC_fit_by_class_P0.png)
+      - [./graph/QC_fit_by_class_P1-E6.png](./graph/QC_fit_by_class_P1-E6.png)
+      - [./graph/QC_fit_by_class_P1-Calu3.png](./graph/QC_fit_by_class_P1-Calu3.png)
 
 6. Plot heatmap for the fitnss of individual mutations   
 ``Rscript script/plot_score_heatmap``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
     - Ouput file:
-      - [./graph/FP_fit_heatmap.png](./graph/FP_fit_heatmap.png)
+      - [./graph/FP_fit_heatmap_P0.png](./graph/FP_fit_heatmap_P0.png)
+      - [./graph/FP_fit_heatmap_P1-E6.png](./graph/FP_fit_heatmap_P1-E6.png)
+      - [./graph/FP_fit_heatmap_P1-Calu3.png](./graph/FP_fit_heatmap_P1-Calu3.png)
