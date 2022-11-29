@@ -1,7 +1,0 @@
-filename
-fastq_merged/Lib1_ipt_merged_assembled.fastq
-fastq_merged/Lib1_P0_merged_assembled.fastq
-fastq_merged/Lib1_P1_merged_assembled.fastq
-fastq_merged/Lib2_ipt_merged_assembled.fastq
-fastq_merged/Lib2_P0_merged_assembled.fastq
-fastq_merged/Lib2_P1_merged_assembled.fastq

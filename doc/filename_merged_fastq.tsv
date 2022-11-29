@@ -1,0 +1,7 @@
+filename	description
+fastq_merged/Lib1_ipt_merged_assembled.fastq	replicate1,input
+fastq_merged/Lib1_P0_merged_assembled.fastq	replicate1,P0
+fastq_merged/Lib1_P1_merged_assembled.fastq	replicate1,P1(Calu3)
+fastq_merged/Lib2_ipt_merged_assembled.fastq	replicate2,input
+fastq_merged/Lib2_P0_merged_assembled.fastq	replicate2,P0
+fastq_merged/Lib2_P1_merged_assembled.fastq	replicate2,P1(Calu3)
