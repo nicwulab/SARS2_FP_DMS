@@ -1,6 +1,6 @@
 filename	description
 fastq_merged/Rep1_ipt_merged.fastq	replicate1,input
-fastq_merged/Rep1_P0_merged.fastq		replicate1,P0
+fastq_merged/Rep1_P0_merged.fastq	replicate1,P0
 fastq_merged/Rep1_P1-Calu3_merged.fastq	replicate1,P1(Calu3)
 fastq_merged/Rep1_P1-E6_merged.fastq	replicate1,P1(VeroE6)
 fastq_merged/Rep2_ipt_merged.fastq	replicate2,input
