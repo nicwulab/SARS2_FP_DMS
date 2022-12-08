@@ -50,7 +50,7 @@
       - [./result/FP_DMS_count_aa.tsv](./result/FP_DMS_count_aa.tsv)
 
 4. Compute fitness   
-``python3 script/FP_count2score.py``   
+``python3 script/FP_count2fit.py``   
     - Input files:
       - [./result/FP_DMS_count_aa.tsv](./result/FP_DMS_count_aa.tsv)
     - Output file:
@@ -70,7 +70,7 @@
       - [./graph/QC_fit_by_class_P1-Calu3.png](./graph/QC_fit_by_class_P1-Calu3.png)
 
 6. Plot heatmap for the fitnss of individual mutations   
-``Rscript script/plot_score_heatmap``   
+``Rscript script/plot_heatmap_fit.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
     - Ouput file:
