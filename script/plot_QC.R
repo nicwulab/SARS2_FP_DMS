@@ -69,6 +69,10 @@ mut_classification <- function(mut_class, resi){
 }
 
 plot_by_class <- function(df, graphname, ylab){
+  t_test(df, 'silent', 'nonsense')
+  t_test(df, 'silent', 'missense')
+  t_test(df, 'missense', 'nonsense')
+
   df <- df %>%
     filter(mut_class != 'WT')
   textsize <- 7
@@ -87,8 +91,8 @@ plot_by_class <- function(df, graphname, ylab){
           legend.title=element_text(size=textsize,face="bold"),
           legend.text=element_text(size=textsize,face="bold"),
           legend.position='right') +
-    ylab(ylab) +
-    ylim(0,4.6)
+    ylab(ylab) #+
+    #ylim(0,4.6)
   ggsave(graphname, p, height=2, width=2,dpi=3000)
 }
 
@@ -101,25 +105,6 @@ df <- read_tsv('result/FP_DMS_fit.tsv') %>%
   filter(avg_ipt_freq >= 0.0001) %>%
   filter(mut != "WT")
 print (nrow(df))
-df_exp <- df %>%
-  rename(rep1=`fit_P1-Calu3_Rep1`) %>%
-  rename(rep2=`fit_P1-Calu3_Rep2`) %>%
-  rename(score=`fit_P1-Calu3`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3.png', 'fitness')
-t_test(df_exp, 'silent', 'nonsense')
-t_test(df_exp, 'silent', 'missense')
-t_test(df_exp, 'missense', 'nonsense')
-
-df_exp <- df %>%
-  rename(rep1=`fit_P1-E6_Rep1`) %>%
-  rename(rep2=`fit_P1-E6_Rep2`) %>%
-  rename(score=`fit_P1-E6`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6.png', 'fitness')
-t_test(df_exp, 'silent', 'nonsense')
-t_test(df_exp, 'silent', 'missense')
-t_test(df_exp, 'missense', 'nonsense')
 
 df_exp <- df %>%
   rename(rep1=fit_P0_Rep1) %>%
@@ -127,7 +112,46 @@ df_exp <- df %>%
   rename(score=fit_P0)
 plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P0.png', "fitness")
 plot_by_class(df_exp, 'graph/QC_fit_by_class_P0.png', 'fitness')
-t_test(df_exp, 'silent', 'nonsense')
-t_test(df_exp, 'silent', 'missense')
-t_test(df_exp, 'missense', 'nonsense')
-#write.table(select(filter(df_exp, mut_class=='missense'), mut, Input_freq, score), 'result/FP_DMS_expression_score.tsv', quote=FALSE, sep="\t", row.names=FALSE)
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-Calu3_noAb_Rep1`) %>%
+  rename(rep2=`fit_P1-Calu3_noAb_Rep2`) %>%
+  rename(score=`fit_P1-Calu3_noAb`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3_noAb.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3_noAb.png', 'fitness')
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-E6_noAb_Rep1`) %>%
+  rename(rep2=`fit_P1-E6_noAb_Rep2`) %>%
+  rename(score=`fit_P1-E6_noAb`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6_noAb.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6_noAb.png', 'fitness')
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-Calu3_CoV44-62_Rep1`) %>%
+  rename(rep2=`fit_P1-Calu3_CoV44-62_Rep2`) %>%
+  rename(score=`fit_P1-Calu3_CoV44-62`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3_CoV44-62.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3_CoV44-62.png', 'fitness')
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-E6_CoV44-62_Rep1`) %>%
+  rename(rep2=`fit_P1-E6_CoV44-62_Rep2`) %>%
+  rename(score=`fit_P1-E6_CoV44-62`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6_CoV44-62.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6_CoV44-62.png', 'fitness')
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-Calu3_CoV44-79_Rep1`) %>%
+  rename(rep2=`fit_P1-Calu3_CoV44-79_Rep2`) %>%
+  rename(score=`fit_P1-Calu3_CoV44-79`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3_CoV44-79.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3_CoV44-79.png', 'fitness')
+
+df_exp <- df %>%
+  rename(rep1=`fit_P1-E6_CoV44-79_Rep1`) %>%
+  rename(rep2=`fit_P1-E6_CoV44-79_Rep2`) %>%
+  rename(score=`fit_P1-E6_CoV44-79`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6_CoV44-79.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6_CoV44-79.png', 'fitness')
+

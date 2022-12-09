@@ -48,7 +48,7 @@ def main():
     flank_3 = 'AACGGCCTTACTGTTTTGCCACCTTTGCTCACAGATGAAATGATTGCTCAA'
     var_dict = {}
     for infile in infiles:
-        sampleID = '_'.join(infile.rsplit('/')[1].rsplit('_')[0:2])
+        sampleID = '_'.join(infile.rsplit('/')[1].rsplit('_')[0:-1])
         var_dict = ProcessMultilib(infile, sampleID, flank_5, flank_3, var_dict, length_roi)
     Output(var_dict, outfile)
 
