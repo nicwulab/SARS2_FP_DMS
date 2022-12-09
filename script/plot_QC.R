@@ -106,12 +106,12 @@ df <- read_tsv('result/FP_DMS_fit.tsv') %>%
   filter(mut != "WT")
 print (nrow(df))
 
-df_exp <- df %>%
-  rename(rep1=fit_P0_Rep1) %>%
-  rename(rep2=fit_P0_Rep2) %>%
-  rename(score=fit_P0)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P0.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P0.png', 'fitness')
+#df_exp <- df %>%
+#  rename(rep1=fit_P0_Rep1) %>%
+#  rename(rep2=fit_P0_Rep2) %>%
+#  rename(score=fit_P0)
+#plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P0.png', "fitness")
+#plot_by_class(df_exp, 'graph/QC_fit_by_class_P0.png', 'fitness')
 
 df_exp <- df %>%
   rename(rep1=`fit_P1-Calu3_noAb_Rep1`) %>%

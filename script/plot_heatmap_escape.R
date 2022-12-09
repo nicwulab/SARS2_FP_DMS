@@ -21,10 +21,10 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
   p <-  ggplot() +
     geom_tile(data=fitness_table,aes(x=resi,y=aa,fill=parameter)) +
     scale_fill_gradientn(colours=c("blue","blue","white","white","red","red"),
-                         limits=c(-1,4.6),
-                         values=rescale(c(-1, 0, 0.8, 1.2, 2, 4.6)),
-                         breaks=c(-1,0,1,2,3,4),
-                         labels=c('-1','0','1','2','3','4'),
+                         limits=c(-1,2.5),
+                         values=rescale(c(-1, 0, 0.8, 1.2, 2, 2.5)),
+                         breaks=c(-1,0,1,2),
+                         labels=c('-1','0','1','2'),
                          guide="colorbar",
                          na.value="grey50") +
     theme_cowplot(12) +
@@ -47,7 +47,7 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
     ylab("amino acid")
 }
 
-wrapper <- function(df_plot, graphname){
+wrapper <- function(df_plot, graphname, legend_title){
   df_plot <- df_plot %>%
     mutate(parameter=case_when(str_sub(resi,1,1)==aa ~ 1, TRUE ~ parameter)) %>% #Set WT parameter (usually 0 or 1)
     mutate(Mutation=paste(resi,aa,sep='')) %>%
@@ -91,25 +91,25 @@ WTresibox  <- df %>%
   mutate(y=match(WT_resi,aa_level)) %>%
   select(resi,WT_resi,Pos,x, y)
 
-legend_title <- "fitness"
+legend_title <- "escape"
+fit_cutoff <- 0.7
 
-#df_plot <- df %>% mutate(parameter=fit_P0) 
-#wrapper(df_plot, 'graph/FP_fit_P0_heatmap.png')
+df_plot <- df %>%
+             mutate(parameter=`fit_P1-Calu3_CoV44-62`/`fit_P1-Calu3_noAb`) %>%
+             mutate(parameter=ifelse(`fit_P1-Calu3_noAb`>fit_cutoff, parameter, NA)) 
+wrapper(df_plot, 'graph/FP_escape_Calu3_CoV44-62.png', legend_title)
 
-df_plot <- df %>% mutate(parameter=`fit_P1-Calu3_noAb`) 
-wrapper(df_plot, 'graph/FP_fit_P1-Calu3_noAb_heatmap.png')
+df_plot <- df %>%
+             mutate(parameter=`fit_P1-Calu3_CoV44-79`/`fit_P1-Calu3_noAb`) %>%
+             mutate(parameter=ifelse(`fit_P1-Calu3_noAb`>fit_cutoff, parameter, NA)) 
+wrapper(df_plot, 'graph/FP_escape_Calu3_CoV44-79.png', legend_title)
 
-df_plot <- df %>% mutate(parameter=`fit_P1-E6_noAb`) 
-wrapper(df_plot, 'graph/FP_fit_P1-E6_noAb_heatmap.png')
+df_plot <- df %>%
+             mutate(parameter=`fit_P1-E6_CoV44-62`/`fit_P1-E6_noAb`) %>%
+             mutate(parameter=ifelse(`fit_P1-E6_noAb`>fit_cutoff, parameter, NA)) 
+wrapper(df_plot, 'graph/FP_escape_E6_CoV44-62.png', legend_title)
 
-df_plot <- df %>% mutate(parameter=`fit_P1-Calu3_CoV44-62`) 
-wrapper(df_plot, 'graph/FP_fit_P1-Calu3_CoV44-62_heatmap.png')
-
-df_plot <- df %>% mutate(parameter=`fit_P1-E6_CoV44-62`) 
-wrapper(df_plot, 'graph/FP_fit_P1-E6_CoV44-62_heatmap.png')
-
-df_plot <- df %>% mutate(parameter=`fit_P1-Calu3_CoV44-79`) 
-wrapper(df_plot, 'graph/FP_fit_P1-Calu3_CoV44-79_heatmap.png')
-
-df_plot <- df %>% mutate(parameter=`fit_P1-E6_CoV44-79`) 
-wrapper(df_plot, 'graph/FP_fit_P1-E6_CoV44-79_heatmap.png')
+df_plot <- df %>%
+             mutate(parameter=`fit_P1-E6_CoV44-79`/`fit_P1-E6_noAb`) %>%
+             mutate(parameter=ifelse(`fit_P1-E6_noAb`>fit_cutoff, parameter, NA)) 
+wrapper(df_plot, 'graph/FP_escape_E6_CoV44-79.png', legend_title)
