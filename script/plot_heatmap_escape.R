@@ -95,21 +95,21 @@ legend_title <- "escape"
 fit_cutoff <- 0.75
 
 df_plot <- df %>%
-             mutate(parameter=`fit_P1-Calu3_CoV44-62` - `fit_P1-Calu3_noAb`) %>%
-             mutate(parameter=ifelse(`fit_P1-Calu3_noAb`>fit_cutoff, parameter, NA)) 
+             mutate(parameter=`fit_Calu3_CoV44-62` - `fit_Calu3_noAb`) %>%
+             mutate(parameter=ifelse(`fit_Calu3_noAb`>fit_cutoff, parameter, NA)) 
 wrapper(df_plot, 'graph/FP_escape_Calu3_CoV44-62.png', legend_title)
 
 df_plot <- df %>%
-             mutate(parameter=`fit_P1-Calu3_CoV44-79` - `fit_P1-Calu3_noAb`) %>%
-             mutate(parameter=ifelse(`fit_P1-Calu3_noAb`>fit_cutoff, parameter, NA)) 
+             mutate(parameter=`fit_Calu3_CoV44-79` - `fit_Calu3_noAb`) %>%
+             mutate(parameter=ifelse(`fit_Calu3_noAb`>fit_cutoff, parameter, NA)) 
 wrapper(df_plot, 'graph/FP_escape_Calu3_CoV44-79.png', legend_title)
 
 df_plot <- df %>%
-             mutate(parameter=`fit_P1-E6_CoV44-62` - `fit_P1-E6_noAb`) %>%
-             mutate(parameter=ifelse(`fit_P1-E6_noAb`>fit_cutoff, parameter, NA)) 
+             mutate(parameter=`fit_E6_CoV44-62` - `fit_E6_noAb`) %>%
+             mutate(parameter=ifelse(`fit_E6_noAb`>fit_cutoff, parameter, NA)) 
 wrapper(df_plot, 'graph/FP_escape_E6_CoV44-62.png', legend_title)
 
 df_plot <- df %>%
-             mutate(parameter=`fit_P1-E6_CoV44-79` - `fit_P1-E6_noAb`) %>%
-             mutate(parameter=ifelse(`fit_P1-E6_noAb`>fit_cutoff, parameter, NA)) 
+             mutate(parameter=`fit_E6_CoV44-79` - `fit_E6_noAb`) %>%
+             mutate(parameter=ifelse(`fit_E6_noAb`>fit_cutoff, parameter, NA)) 
 wrapper(df_plot, 'graph/FP_escape_E6_CoV44-79.png', legend_title)

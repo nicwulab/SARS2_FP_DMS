@@ -93,23 +93,20 @@ WTresibox  <- df %>%
 
 legend_title <- "fitness"
 
-#df_plot <- df %>% mutate(parameter=fit_P0) 
-#wrapper(df_plot, 'graph/FP_fit_P0_heatmap.png')
+df_plot <- df %>% mutate(parameter=`fit_Calu3_noAb`) 
+wrapper(df_plot, 'graph/FP_fit_Calu3_noAb_heatmap.png')
 
-df_plot <- df %>% mutate(parameter=`fit_P1-Calu3_noAb`) 
-wrapper(df_plot, 'graph/FP_fit_P1-Calu3_noAb_heatmap.png')
+df_plot <- df %>% mutate(parameter=`fit_E6_noAb`) 
+wrapper(df_plot, 'graph/FP_fit_E6_noAb_heatmap.png')
 
-df_plot <- df %>% mutate(parameter=`fit_P1-E6_noAb`) 
-wrapper(df_plot, 'graph/FP_fit_P1-E6_noAb_heatmap.png')
+df_plot <- df %>% mutate(parameter=`fit_Calu3_CoV44-62`) 
+wrapper(df_plot, 'graph/FP_fit_Calu3_CoV44-62_heatmap.png')
 
-df_plot <- df %>% mutate(parameter=`fit_P1-Calu3_CoV44-62`) 
-wrapper(df_plot, 'graph/FP_fit_P1-Calu3_CoV44-62_heatmap.png')
+df_plot <- df %>% mutate(parameter=`fit_E6_CoV44-62`) 
+wrapper(df_plot, 'graph/FP_fit_E6_CoV44-62_heatmap.png')
 
-df_plot <- df %>% mutate(parameter=`fit_P1-E6_CoV44-62`) 
-wrapper(df_plot, 'graph/FP_fit_P1-E6_CoV44-62_heatmap.png')
+df_plot <- df %>% mutate(parameter=`fit_Calu3_CoV44-79`) 
+wrapper(df_plot, 'graph/FP_fit_Calu3_CoV44-79_heatmap.png')
 
-df_plot <- df %>% mutate(parameter=`fit_P1-Calu3_CoV44-79`) 
-wrapper(df_plot, 'graph/FP_fit_P1-Calu3_CoV44-79_heatmap.png')
-
-df_plot <- df %>% mutate(parameter=`fit_P1-E6_CoV44-79`) 
-wrapper(df_plot, 'graph/FP_fit_P1-E6_CoV44-79_heatmap.png')
+df_plot <- df %>% mutate(parameter=`fit_E6_CoV44-79`) 
+wrapper(df_plot, 'graph/FP_fit_E6_CoV44-79_heatmap.png')

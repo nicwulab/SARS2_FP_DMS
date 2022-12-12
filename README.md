@@ -7,9 +7,9 @@
 * [PEAR](https://github.com/tseemann/PEAR)
 
 ### Input files
+* Raw read files in fastq format from NIH SRA database [BioProject PRJNA910585](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA910585)
 * [./Fasta/SARS2-FP_with_flank.fa](./Fasta/SARS2-FP_with_flank.fa): Fusion peptide sequences with 21 nt upstream (5' flank)
 * [./Fasta/FP_ref.fa](./Fasta/FP_ref.fa): Reference (i.e. wild type) amino acid sequences (primer regions not included)
-* Raw read files in fastq format from NIH SRA database BioProject PRJNAXXXXXX
 
 ### Primer design for DMS library construction
 1. Generating foward (NNK + internal barcode) and reverse primers (constant)   
@@ -62,18 +62,18 @@
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/NTD_DMS_fit.tsv)
     - Output files:
-      - [./graph/QC_replicate_fit_P0.png](./graph/QC_replicate_fit_P0.png)
-      - [./graph/QC_replicate_fit_P1-E6.png](./graph/QC_replicate_fit_P1-E6.png)
-      - [./graph/QC_replicate_fit_P1-Calu3.png](./graph/QC_replicate_fit_P1-Calu3.png)
-      - [./graph/QC_fit_by_class_P0.png](./graph/QC_fit_by_class_P0.png)
-      - [./graph/QC_fit_by_class_P1-E6.png](./graph/QC_fit_by_class_P1-E6.png)
-      - [./graph/QC_fit_by_class_P1-Calu3.png](./graph/QC_fit_by_class_P1-Calu3.png)
+      - graph/QC_*.png
 
 6. Plot heatmap for the fitnss of individual mutations   
 ``Rscript script/plot_heatmap_fit.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
     - Ouput file:
-      - [./graph/FP_fit_heatmap_P0.png](./graph/FP_fit_heatmap_P0.png)
-      - [./graph/FP_fit_heatmap_P1-E6.png](./graph/FP_fit_heatmap_P1-E6.png)
-      - [./graph/FP_fit_heatmap_P1-Calu3.png](./graph/FP_fit_heatmap_P1-Calu3.png)
+      - graph/FP_fit_heatmap_*.png
+
+7. Plot heatmap for the antibody escape of individual mutations   
+``Rscript script/plot_heatmap_escape.R``   
+    - Input file:
+      - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
+    - Ouput file:
+      - graph/FP_escape_*.png

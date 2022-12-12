@@ -106,52 +106,45 @@ df <- read_tsv('result/FP_DMS_fit.tsv') %>%
   filter(mut != "WT")
 print (nrow(df))
 
-#df_exp <- df %>%
-#  rename(rep1=fit_P0_Rep1) %>%
-#  rename(rep2=fit_P0_Rep2) %>%
-#  rename(score=fit_P0)
-#plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P0.png', "fitness")
-#plot_by_class(df_exp, 'graph/QC_fit_by_class_P0.png', 'fitness')
+df_exp <- df %>%
+  rename(rep1=`fit_Calu3_noAb_Rep1`) %>%
+  rename(rep2=`fit_Calu3_noAb_Rep2`) %>%
+  rename(score=`fit_Calu3_noAb`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_Calu3_noAb.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_Calu3_noAb.png', 'fitness')
 
 df_exp <- df %>%
-  rename(rep1=`fit_P1-Calu3_noAb_Rep1`) %>%
-  rename(rep2=`fit_P1-Calu3_noAb_Rep2`) %>%
-  rename(score=`fit_P1-Calu3_noAb`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3_noAb.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3_noAb.png', 'fitness')
+  rename(rep1=`fit_E6_noAb_Rep1`) %>%
+  rename(rep2=`fit_E6_noAb_Rep2`) %>%
+  rename(score=`fit_E6_noAb`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_noAb.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_noAb.png', 'fitness')
 
 df_exp <- df %>%
-  rename(rep1=`fit_P1-E6_noAb_Rep1`) %>%
-  rename(rep2=`fit_P1-E6_noAb_Rep2`) %>%
-  rename(score=`fit_P1-E6_noAb`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6_noAb.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6_noAb.png', 'fitness')
+  rename(rep1=`fit_Calu3_CoV44-62_Rep1`) %>%
+  rename(rep2=`fit_Calu3_CoV44-62_Rep2`) %>%
+  rename(score=`fit_Calu3_CoV44-62`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_Calu3_CoV44-62.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_Calu3_CoV44-62.png', 'fitness')
 
 df_exp <- df %>%
-  rename(rep1=`fit_P1-Calu3_CoV44-62_Rep1`) %>%
-  rename(rep2=`fit_P1-Calu3_CoV44-62_Rep2`) %>%
-  rename(score=`fit_P1-Calu3_CoV44-62`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3_CoV44-62.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3_CoV44-62.png', 'fitness')
+  rename(rep1=`fit_E6_CoV44-62_Rep1`) %>%
+  rename(rep2=`fit_E6_CoV44-62_Rep2`) %>%
+  rename(score=`fit_E6_CoV44-62`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_CoV44-62.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_CoV44-62.png', 'fitness')
 
 df_exp <- df %>%
-  rename(rep1=`fit_P1-E6_CoV44-62_Rep1`) %>%
-  rename(rep2=`fit_P1-E6_CoV44-62_Rep2`) %>%
-  rename(score=`fit_P1-E6_CoV44-62`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6_CoV44-62.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6_CoV44-62.png', 'fitness')
+  rename(rep1=`fit_Calu3_CoV44-79_Rep1`) %>%
+  rename(rep2=`fit_Calu3_CoV44-79_Rep2`) %>%
+  rename(score=`fit_Calu3_CoV44-79`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_Calu3_CoV44-79.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_Calu3_CoV44-79.png', 'fitness')
 
 df_exp <- df %>%
-  rename(rep1=`fit_P1-Calu3_CoV44-79_Rep1`) %>%
-  rename(rep2=`fit_P1-Calu3_CoV44-79_Rep2`) %>%
-  rename(score=`fit_P1-Calu3_CoV44-79`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-Calu3_CoV44-79.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-Calu3_CoV44-79.png', 'fitness')
-
-df_exp <- df %>%
-  rename(rep1=`fit_P1-E6_CoV44-79_Rep1`) %>%
-  rename(rep2=`fit_P1-E6_CoV44-79_Rep2`) %>%
-  rename(score=`fit_P1-E6_CoV44-79`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P1-E6_CoV44-79.png', "fitness")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_P1-E6_CoV44-79.png', 'fitness')
+  rename(rep1=`fit_E6_CoV44-79_Rep1`) %>%
+  rename(rep2=`fit_E6_CoV44-79_Rep2`) %>%
+  rename(score=`fit_E6_CoV44-79`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_CoV44-79.png', "fitness")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_CoV44-79.png', 'fitness')
 

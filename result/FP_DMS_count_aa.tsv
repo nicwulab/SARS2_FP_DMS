@@ -1,4 +1,4 @@
-mut	mut_class	Rep1_P1-Calu3_CoV44-62	Rep1_P1-Calu3_CoV44-79	Rep1_P1-Calu3_noAb	Rep1_P1-E6_CoV44-62	Rep1_P1-E6_CoV44-79	Rep1_P1-E6_noAb	Rep1_ipt	Rep2_P1-Calu3_CoV44-62	Rep2_P1-Calu3_CoV44-79	Rep2_P1-Calu3_noAb	Rep2_P1-E6_CoV44-62	Rep2_P1-E6_CoV44-79	Rep2_P1-E6_noAb	Rep2_ipt
+mut	mut_class	Rep1_Calu3_CoV44-62	Rep1_Calu3_CoV44-79	Rep1_Calu3_noAb	Rep1_E6_CoV44-62	Rep1_E6_CoV44-79	Rep1_E6_noAb	Rep1_ipt	Rep2_Calu3_CoV44-62	Rep2_Calu3_CoV44-79	Rep2_Calu3_noAb	Rep2_E6_CoV44-62	Rep2_E6_CoV44-79	Rep2_E6_noAb	Rep2_ipt
 D808E	missense	0	0	0	0	0	0	515	193	4	2	13	1	0	620
 D808D	silent	31	19	13	8	8	0	2480	5292	2289	6089	166	252	30	1133
 D808R	missense	29	16	5	11	55	9	3804	2	8	0	0	7	1	2091
