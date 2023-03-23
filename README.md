@@ -3,6 +3,8 @@
 ### Dependencies
 * [Python](https://www.python.org/) (version 3.9)
 * [Biopython](https://github.com/biopython/biopython)
+* [Seaborn](https://seaborn.pydata.org/)
+* [Matplotlib](https://matplotlib.org/)
 * [R](https://www.r-project.org/) (version 4.1)
 * [PEAR](https://github.com/tseemann/PEAR)
 

@@ -20,7 +20,7 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
     mutate(x=x-min(x)+1)
   p <-  ggplot() +
     geom_tile(data=fitness_table,aes(x=resi,y=aa,fill=parameter)) +
-    scale_fill_gradientn(colours=c("blue","blue","white","white","red","red"),
+    scale_fill_gradientn(colours=c("green","green","white","white","purple","purple"),
                          limits=c(-2.6,1.6),
                          values=rescale(c(-2.6, -1, -0.2, 0.2, 1, 1.5)),
                          breaks=c(-2,-1,0,1),
