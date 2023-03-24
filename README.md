@@ -13,7 +13,7 @@
 * [./Fasta/SARS2-FP_with_flank.fa](./Fasta/SARS2-FP_with_flank.fa): Fusion peptide sequences with 21 nt upstream (5' flank)
 * [./Fasta/FP_ref.fa](./Fasta/FP_ref.fa): Reference (i.e. wild type) amino acid sequences (primer regions not included)
 * [./data/Tree_aa_fitness.csv](./data/Tree_aa_fitness.csv): S mutational fitness estimated from phylogeny by [Bloom & Neher](https://www.biorxiv.org/content/10.1101/2023.01.30.526314v1). The orignal data are from [here](https://github.com/jbloomlab/SARS2-mut-fitness/blob/main/results/aa_fitness/aa_fitness.csv).
-* [./data/BA1_DMS_muteffects_observed.csv](./data/BA1_DMS_muteffects_observed.csv): S mutational fitness measured by a pseudovirus system by [Dadonaite et al.](https://www.cell.com/cell/fulltext/S0092-8674(23)00103-4). The orignal data are from [here](https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/results/muteffects_functional/muteffects_observed.csv).
+* [./data/BA1_DMS_muteffects_observed.csv](./data/BA1_DMS_muteffects_observed.csv): S mutational fitness measured by a pseudovirus system by [Dadonaite et al](https://www.cell.com/cell/fulltext/S0092-8674(23)00103-4). The orignal data are from [here](https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/results/muteffects_functional/muteffects_observed.csv).
 
 ### Primer design for DMS library construction
 1. Generating foward (NNK + internal barcode) and reverse primers (constant)   
