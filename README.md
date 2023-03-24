@@ -12,6 +12,8 @@
 * Raw read files in fastq format from NIH SRA database [BioProject PRJNA910585](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA910585)
 * [./Fasta/SARS2-FP_with_flank.fa](./Fasta/SARS2-FP_with_flank.fa): Fusion peptide sequences with 21 nt upstream (5' flank)
 * [./Fasta/FP_ref.fa](./Fasta/FP_ref.fa): Reference (i.e. wild type) amino acid sequences (primer regions not included)
+* [./data/Tree_aa_fitness.csv](./data/Tree_aa_fitness.csv): S mutational fitness estimated from phylogeny by [Bloom & Neher](https://www.biorxiv.org/content/10.1101/2023.01.30.526314v1). The orignal data are from [here](https://github.com/jbloomlab/SARS2-mut-fitness/blob/main/results/aa_fitness/aa_fitness.csv).
+* [./data/BA1_DMS_muteffects_observed.csv](./data/BA1_DMS_muteffects_observed.csv): S mutational fitness measured by a pseudovirus system by [Dadonaite et al.](https://www.cell.com/cell/fulltext/S0092-8674(23)00103-4). The orignal data are from [here](https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/results/muteffects_functional/muteffects_observed.csv)
 
 ### Primer design for DMS library construction
 1. Generating foward (NNK + internal barcode) and reverse primers (constant)   
@@ -66,14 +68,26 @@
     - Output files:
       - graph/QC_*.png
 
-6. Plot heatmap for the fitnss of individual mutations   
+6. Plot correlation between fitness measurements in this study and those in previous studies
+``python3 script/plot_cor_measures.py``
+    - Input file: 
+      - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
+      - [./data/BA1_DMS_muteffects_observed.csv]
+      - [./data/Tree_aa_fitness.csv]
+    - Output files:
+      - [./graph/cor_BA1_vs_Calu3.png](./graph/cor_BA1_vs_Calu3.png)
+      - [./graph/cor_BA1_vs_E6.png](./graph/cor_BA1_vs_E6.png)
+      - [./graph/cor_tree_vs_Calu3.png](./graph/cor_tree_vs_Calu3.png)
+      - [./graph/cor_tree_vs_E6.png](./graph/cor_tree_vs_E6.png)
+
+7. Plot heatmap for the fitnss of individual mutations   
 ``Rscript script/plot_heatmap_fit.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
     - Ouput file:
       - graph/FP_fit_heatmap_*.png
 
-7. Plot heatmap for the antibody escape of individual mutations   
+8. Plot heatmap for the antibody escape of individual mutations   
 ``Rscript script/plot_heatmap_escape.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
