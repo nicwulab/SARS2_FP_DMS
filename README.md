@@ -75,10 +75,7 @@
       - [./data/BA1_DMS_muteffects_observed.csv](./data/BA1_DMS_muteffects_observed.csv)
       - [./data/Tree_aa_fitness.csv](./data/Tree_aa_fitness.csv)
     - Output files:
-      - [./graph/cor_BA1_vs_Calu3.png](./graph/cor_BA1_vs_Calu3.png)
-      - [./graph/cor_BA1_vs_E6.png](./graph/cor_BA1_vs_E6.png)
-      - [./graph/cor_tree_vs_Calu3.png](./graph/cor_tree_vs_Calu3.png)
-      - [./graph/cor_tree_vs_E6.png](./graph/cor_tree_vs_E6.png)
+      - graph/cor_*.png
 
 7. Plot heatmap for the fitnss of individual mutations   
 ``Rscript script/plot_heatmap_fit.R``   
