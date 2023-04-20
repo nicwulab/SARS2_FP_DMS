@@ -7,6 +7,7 @@
 * [Matplotlib](https://matplotlib.org/)
 * [R](https://www.r-project.org/) (version 4.1)
 * [PEAR](https://github.com/tseemann/PEAR)
+* [PyMOL](https://pymol.org/)
 
 ### Input files
 * Raw read files in fastq format from NIH SRA database [BioProject PRJNA910585](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA910585)
@@ -61,14 +62,23 @@
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
       - [./result/FP_DMS_fit_by_resi.tsv](./result/FP_DMS_fit_by_resi.tsv)
 
-5. Plot correlation between replicates and compare silent/missense/nonsense   
+5. Convert B factor in PDB file into mean fitness value   
+``python3 script/convert_Bfactor_to_fit.py``   
+    - Input file:
+      - [./PDB/7my8.pdb](./PDB/7my8.pdb)
+      - [./result/FP_DMS_fit_by_resi.tsv](./result/FP_DMS_fit_by_resi.tsv)
+    - Output file: 
+      - [./PDB/7my8_fit.pdb](./PDB/7my8_fit.pdb)
+
+### Plotting
+1. Plot correlation between replicates and compare silent/missense/nonsense   
 ``Rscript script/plot_QC.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/NTD_DMS_fit.tsv)
     - Output files:
       - graph/QC_*.png
 
-6. Plot correlation between fitness measurements in this study and those in previous studies
+2. Plot correlation between fitness measurements in this study and those in previous studies
 ``python3 script/plot_cor_measures.py``
     - Input file: 
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
@@ -77,14 +87,28 @@
     - Output files:
       - graph/cor_*.png
 
-7. Plot heatmap for the fitnss of individual mutations   
+3. Plot heatmap for the fitnss of individual mutations   
 ``Rscript script/plot_heatmap_fit.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
     - Ouput file:
       - graph/FP_fit_heatmap_*.png
 
-8. Plot heatmap for the antibody escape of individual mutations   
+4. Plot mean fitness (i.e. mutational tolerance) of individual residue positions   
+``Rscript script/plot_mean_fit.R``   
+    - Input file:
+      - [./result/FP_DMS_fit_by_resi.tsv](./result/FP_DMS_fit_by_resi.tsv)
+    - Output file:
+      - [./graph/mean_fit.png](./graph/mean_fit.png)
+
+5. Plot meanfitness on structure   
+``pymol script/plot_Bfactor_as_fit.pml``
+    - Input file:
+      - [./PDB/7my8_fit.pdb](./PDB/7my8_fit.pdb)
+    - Output file:
+      - [./graph/structure_FP.png](./graph/structure_FP.png)
+
+6. Plot heatmap for the antibody escape of individual mutations   
 ``Rscript script/plot_heatmap_escape.R``   
     - Input file:
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
