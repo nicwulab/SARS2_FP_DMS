@@ -62,8 +62,8 @@ def main():
          'fitness in Calu3 (noAb)', 'fitness from phylogeny\n(Bloom & Neher)', 'graph/cor_tree_vs_Calu3.png')
     plot(tree_FP_DMS_fit_merged, "fit_E6_noAb", "fitness", 'tree_FP_DMS_fit',
          'fitness in E6 (noAb)', 'fitness from phylogeny\n(Bloom & Neher)', 'graph/cor_tree_vs_E6.png')
-    print (BA1_merged_df.corr(method='pearson'))
-    print (tree_FP_DMS_fit_merged.corr(method='pearson'))
+    print (BA1_merged_df.corr(method='spearman'))
+    print (tree_FP_DMS_fit_merged.corr(method='spearman'))
 
 if __name__ == "__main__":
   main()
