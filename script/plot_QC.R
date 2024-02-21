@@ -30,14 +30,14 @@ plot_replicate_cor <- function(df, graphname, param, title){
   p <- ggplot(df,aes(x=rep1, y=rep2)) +
     geom_point(size=0.6, alpha=0.5, color='grey30', pch=16) +
     theme_cowplot(12) +
-    theme(plot.title=element_text(size=textsize,face="bold",hjust=0.5),
+    theme(plot.title=element_text(size=textsize,face="bold",family="Arial",hjust=0.5),
           plot.background = element_rect(fill = "white"),
-          axis.title=element_text(size=textsize,face="bold"),
-          axis.text=element_text(size=textsize,face="bold"),
+          axis.title=element_text(size=textsize,face="bold",family="Arial"),
+          axis.text=element_text(size=textsize,face="bold",family="Arial"),
           legend.key.size=unit(0.1,'in'),
           legend.spacing.x=unit(0.03, 'in'),
-          legend.title=element_text(size=textsize,face="bold"),
-          legend.text=element_text(size=textsize,face="bold"),
+          legend.title=element_text(size=textsize,face="bold",family="Arial"),
+          legend.text=element_text(size=textsize,face="bold",family="Arial"),
           legend.position='right') +
     ggtitle(title) +
     labs(x=bquote(bold(paste(.(param),' (replicate 1)'))),y=bquote(bold(paste(.(param),' (replicate 2)'))))
@@ -65,16 +65,16 @@ plot_by_class <- function(df, graphname, ylab, title){
     geom_sina(pch=16, size=0.1,method="counts", bin_limit=0.4, scale="width", maxwidth=0.5, color='black', alpha=0.2) +
     geom_boxplot(width=0.3, color="black", outlier.shape=NA, alpha=0) + 
     theme_cowplot(12) +
-    theme(plot.title=element_text(size=textsize,face="bold", hjust = 0.5),
+    theme(plot.title=element_text(size=textsize,face="bold",family="Arial", hjust = 0.5),
           plot.background = element_rect(fill = "white"),
           axis.title.x=element_blank(),
-          axis.title.y=element_text(size=textsize,face="bold"),
-          axis.text.x=element_text(size=textsize,face="bold",angle=90,hjust=1,vjust=0.5),
-          axis.text.y=element_text(size=textsize,face="bold"),
+          axis.title.y=element_text(size=textsize,face="bold",family="Arial"),
+          axis.text.x=element_text(size=textsize,face="bold",family="Arial",angle=90,hjust=1,vjust=0.5),
+          axis.text.y=element_text(size=textsize,face="bold",family="Arial"),
           legend.key.size=unit(0.1,'in'),
           legend.spacing.x=unit(0.03, 'in'),
-          legend.title=element_text(size=textsize,face="bold"),
-          legend.text=element_text(size=textsize,face="bold"),
+          legend.title=element_text(size=textsize,face="bold",family="Arial"),
+          legend.text=element_text(size=textsize,face="bold",family="Arial"),
           legend.position='right') +
     ggtitle(title) +
     ylab(ylab) +
@@ -104,8 +104,8 @@ df_exp <- df %>%
   rename(rep1=`fit_E6_noAb_Rep1`) %>%
   rename(rep2=`fit_E6_noAb_Rep2`) %>%
   rename(score=`fit_E6_noAb`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_noAb.png', "fitness", "Vero E6 (no Ab)")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_noAb.png', 'fitness', "Vero E6 (no Ab)")
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_noAb.png', "fitness", "Vero (no Ab)")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_noAb.png', 'fitness', "Vero (no Ab)")
 
 df_exp <- df %>%
   rename(rep1=`fit_Calu3_CoV44-62_Rep1`) %>%
@@ -118,8 +118,8 @@ df_exp <- df %>%
   rename(rep1=`fit_E6_CoV44-62_Rep1`) %>%
   rename(rep2=`fit_E6_CoV44-62_Rep2`) %>%
   rename(score=`fit_E6_CoV44-62`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_CoV44-62.png', "fitness", "Vero E6 (COV44-62)")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_CoV44-62.png', 'fitness', "Vero E6 (COV44-62)")
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_CoV44-62.png', "fitness", "Vero (COV44-62)")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_CoV44-62.png', 'fitness', "Vero (COV44-62)")
 
 df_exp <- df %>%
   rename(rep1=`fit_Calu3_CoV44-79_Rep1`) %>%
@@ -132,6 +132,6 @@ df_exp <- df %>%
   rename(rep1=`fit_E6_CoV44-79_Rep1`) %>%
   rename(rep2=`fit_E6_CoV44-79_Rep2`) %>%
   rename(score=`fit_E6_CoV44-79`)
-plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_CoV44-79.png', "fitness", "Vero E6 (COV44-79)")
-plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_CoV44-79.png', 'fitness', "Vero E6 (COV44-79)")
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_E6_CoV44-79.png', "fitness", "Vero (COV44-79)")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_E6_CoV44-79.png', 'fitness', "Vero (COV44-79)")
 

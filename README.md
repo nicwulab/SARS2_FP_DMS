@@ -54,7 +54,16 @@
     - Output files:
       - [./result/FP_DMS_count_aa.tsv](./result/FP_DMS_count_aa.tsv)
 
-4. Compute fitness   
+4. Convert nucleotide sequences to codon variants   
+``python3 script/FP_count_nuc2aa.py``   
+    - Input files:
+      - [./data/barcodes.tsv](./data/barcodes.tsv)
+      - [./Fasta/FP_ref.fa](./Fasta/FP_ref.fa)
+      - result/FP_DMS_count_nuc.tsv
+    - Output files:
+      - [./result/FP_DMS_count_codon.tsv](./result/FP_DMS_count_codon.tsv)
+
+5. Compute fitness   
 ``python3 script/FP_count2fit.py``   
     - Input files:
       - [./result/FP_DMS_count_aa.tsv](./result/FP_DMS_count_aa.tsv)
@@ -62,7 +71,7 @@
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
       - [./result/FP_DMS_fit_by_resi.tsv](./result/FP_DMS_fit_by_resi.tsv)
 
-5. Convert B factor in PDB file into mean fitness value   
+6. Convert B factor in PDB file into mean fitness value   
 ``python3 script/convert_Bfactor_to_fit.py``   
     - Input file:
       - [./PDB/7my8.pdb](./PDB/7my8.pdb)
@@ -114,3 +123,10 @@
       - [./result/FP_DMS_fit.tsv](./result/FP_DMS_fit.tsv)
     - Ouput file:
       - graph/FP_escape_*.png
+
+7. Plot heatmap for the codon variants   
+``Rscript script/plot_heatmap_codon_freq.R``   
+    - Input file:
+      - [./result/FP_DMS_codon_freq.tsv](./result/FP_DMS_codon_freq.tsv)
+    - Ouput file:
+      - graph/FP_codon_freq_*.png

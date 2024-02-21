@@ -17,10 +17,10 @@ plot_mean_fit <- function(df, graphname){
   textsize <- 7
   palette <- brewer.pal(3,"Accent")
   p <- ggplot(df,aes(x=pos, y=value, color=variable)) +
-    geom_point(size=1, alpha=1, pch=16) +
-    geom_line() +
-    scale_color_manual(values=palette,drop=FALSE,
-                       labels = c("Calu-3", "Vero E6")) +
+    geom_point(size=1, alpha=1, pch=16, color='grey30') +
+    geom_line(color='grey30') +
+    #scale_color_manual(values=palette,drop=FALSE,
+    #                   labels = c("Calu-3", "Vero E6")) +
     theme_cowplot(12) +
     theme(plot.title=element_blank(),
           plot.background = element_rect(fill = "white"),
@@ -37,10 +37,10 @@ plot_mean_fit <- function(df, graphname){
   }
 
 df <- read_tsv('result/FP_DMS_fit_by_resi.tsv') %>%
-        select(resi, pos, mean_fit_Calu3_noAb, mean_fit_E6_noAb) %>%
+        #select(resi, pos, mean_fit_Calu3_noAb, mean_fit_E6_noAb) %>%
+        select(resi, pos, mean_fit_Calu3_noAb) %>%
         data.table(.) %>%
         melt(., id=c('resi', 'pos'))
-print (df)
 plot_mean_fit(df, 'graph/mean_fit.png')
 
 

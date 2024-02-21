@@ -12,14 +12,14 @@ library(stringr)
 require(cowplot)
 
 plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, legend_title){
-  textsize <- 5
+  textsize <- 5.5
   fitness_table <- fitness_table %>%
     filter(Pos >= start_resi & Pos <= end_resi)
   WTresibox     <- WTresibox %>%
     filter(Pos >= start_resi & Pos <= end_resi) %>%
     mutate(x=x-min(x)+1)
   p <-  ggplot() +
-    geom_tile(data=fitness_table,aes(x=resi,y=aa,fill=parameter)) +
+    geom_tile(data=fitness_table,aes(x=resi,y=aa,fill=parameter),color='black') +
     scale_fill_gradientn(colours=c("green","green","white","white","purple","purple"),
                          limits=c(-2.6,1.6),
                          values=rescale(c(-2.6, -1, -0.2, 0.2, 1, 1.5)),
@@ -33,12 +33,12 @@ plot_score_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi, l
           axis.text.x=element_text(angle=90,hjust=1,vjust=0.5,colour = 'black'),
           axis.text.y=element_text(hjust=0.5,vjust=0.5,colour = 'black'),
           axis.title=element_text(size=7,face="bold"),
-          axis.line = element_line(colour = 'black', size = 0),
-          panel.border = element_rect(colour = "black", fill=NA, size=1)) +
+          axis.line = element_line(colour = 'black', linewidth = 0),
+          panel.border = element_rect(colour = "black", fill=NA, linewidth=1)) +
     guides(fill = guide_colorbar(title.theme=element_text(size=7,face="bold",colour='black',hjust=0.5),
                                  label.theme=element_text(size=7,face="bold",colour='black'),
                                  frame.colour="black",
-                                 frame.linewidth = 1,
+                                 frame.linewidth = 0.5,
                                  ticks = TRUE,
                                  ticks.colour = "black",
                                  barwidth = 0.5, barheight = 6, title=legend_title)) +
@@ -58,7 +58,7 @@ wrapper <- function(df_plot, graphname, legend_title){
   ggsave(graphname,p,width=4, height=2, dpi=300) #Output file may need to adjust
   }
 
-aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
+aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','*'))
 
 start_pos <- 808
 end_pos   <- 855
@@ -75,6 +75,7 @@ df <- df %>%
   filter(avg_ipt_freq>= 0.0001) %>%
   mutate(resi=str_sub(mut,1,-2)) %>%
   mutate(aa=str_sub(mut,-1,-1)) %>%
+  mutate(aa=ifelse(aa=='_', '*', aa)) %>%
   filter(aa %in% aa_level) %>%
   mutate(aa=factor(aa,levels=aa_level)) %>%
   mutate(resi=factor(resi,levels=unique(residues))) %>%

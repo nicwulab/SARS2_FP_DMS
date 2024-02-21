@@ -57,11 +57,11 @@ def main():
     plot(BA1_merged_df, "fit_Calu3_noAb", "effect", 'BA1_DMS_Fit',
          'fitness in Calu3 (noAb)', 'BA1 functional score\n(Dadonaite et al.)','graph/cor_BA1_vs_Calu3.png')
     plot(BA1_merged_df, "fit_E6_noAb", "effect", 'BA1_DMS_Fit',
-         'fitness in E6 (noAb)', 'BA1 functional score\n(Dadonaite et al.)', 'graph/cor_BA1_vs_E6.png')
+         'fitness in Vero (noAb)', 'BA1 functional score\n(Dadonaite et al.)', 'graph/cor_BA1_vs_E6.png')
     plot(tree_FP_DMS_fit_merged, "fit_Calu3_noAb", "fitness", 'tree_FP_DMS_fit',
          'fitness in Calu3 (noAb)', 'fitness from phylogeny\n(Bloom & Neher)', 'graph/cor_tree_vs_Calu3.png')
     plot(tree_FP_DMS_fit_merged, "fit_E6_noAb", "fitness", 'tree_FP_DMS_fit',
-         'fitness in E6 (noAb)', 'fitness from phylogeny\n(Bloom & Neher)', 'graph/cor_tree_vs_E6.png')
+         'fitness in Vero (noAb)', 'fitness from phylogeny\n(Bloom & Neher)', 'graph/cor_tree_vs_E6.png')
     print (BA1_merged_df.corr(method='spearman'))
     print (tree_FP_DMS_fit_merged.corr(method='spearman'))
 
