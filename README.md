@@ -55,7 +55,7 @@
       - [./result/FP_DMS_count_aa.tsv](./result/FP_DMS_count_aa.tsv)
 
 4. Convert nucleotide sequences to codon variants   
-``python3 script/FP_count_nuc2aa.py``   
+``python3 script/FP_count_nuc2codon.py``   
     - Input files:
       - [./data/barcodes.tsv](./data/barcodes.tsv)
       - [./Fasta/FP_ref.fa](./Fasta/FP_ref.fa)
