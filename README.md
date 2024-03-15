@@ -132,7 +132,7 @@
       - graph/FP_codon_freq_*.png
 
 ### Analyze mutation rate
-1. Analyze mutation rate   
+1. Identity number of amino acid mutations on each merged reads    
 ``python3 script/analyze_mut_rate.py``   
     - Input file:
       - Merged read files in fastq_merged/ folder
