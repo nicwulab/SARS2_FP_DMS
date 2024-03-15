@@ -30,6 +30,7 @@ plot_mut_count <- function(df, graphname, h, w){
 		legend.text=element_text(size=textsize,face="bold"),
 		legend.justification = "center",
 		legend.position='right') +
+          ggtitle('BAC mutant library') +
 	  labs(x='# of amino acid mutations',y=bquote(bold('% of reads'))) +
 	  scale_y_continuous(limits=c(0,1), breaks=c(0,0.2,0.4,0.6,0.8,1),labels=c(0,20,40,60,80,100)) +
 	  scale_x_continuous(limits=c(-0.5,3.5), breaks=seq(0,3),labels=c('0','1','2','≥3'))
