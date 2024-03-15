@@ -130,3 +130,21 @@
       - [./result/FP_DMS_codon_freq.tsv](./result/FP_DMS_codon_freq.tsv)
     - Ouput file:
       - graph/FP_codon_freq_*.png
+
+### Analyze mutation rate
+1. Analyze mutation rate
+``python3 script/analyze_mut_rate.py``   
+    - Input file:
+      - Merged read files in fastq_merged/ folder
+      - [./Fasta/FP_ref.fa](./Fasta/FP_ref.fa)
+    - Output file:
+      - [./result/Lib1_mut_count.tsv](./result/Lib1_mut_count.tsv)
+      - [./result/Lib2_mut_count.tsv](./result/Lib2_mut_count.tsv)
+
+2. Plot mutation rate   
+``Rscript script/plot_lib_mut_count.R``   
+    - Input file:
+      - [./result/Lib1_mut_count.tsv](./result/Lib1_mut_count.tsv)
+      - [./result/Lib2_mut_count.tsv](./result/Lib2_mut_count.tsv)
+    - Output file:
+      - [./graph/Mut_count_input_lib.png](./graph/Mut_count_input_lib.png)
