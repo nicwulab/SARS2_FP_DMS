@@ -132,7 +132,7 @@
       - graph/FP_codon_freq_*.png
 
 ### Analyze mutation rate
-1. Analyze mutation rate
+1. Analyze mutation rate   
 ``python3 script/analyze_mut_rate.py``   
     - Input file:
       - Merged read files in fastq_merged/ folder
