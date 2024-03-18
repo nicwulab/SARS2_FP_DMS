@@ -94,6 +94,13 @@ df <- read_tsv('result/FP_DMS_fit.tsv') %>%
 print (nrow(df))
 
 df_exp <- df %>%
+  rename(rep1=`fit_P0_Rep1`) %>%
+  rename(rep2=`fit_P0_Rep2`) %>%
+  rename(score=`fit_P0`)
+plot_replicate_cor(df_exp, 'graph/QC_replicate_fit_P0.png', "fitness", "P0")
+plot_by_class(df_exp, 'graph/QC_fit_by_class_P0.png', 'fitness', "P0")
+
+df_exp <- df %>%
   rename(rep1=`fit_Calu3_noAb_Rep1`) %>%
   rename(rep2=`fit_Calu3_noAb_Rep2`) %>%
   rename(score=`fit_Calu3_noAb`)

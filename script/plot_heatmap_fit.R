@@ -94,6 +94,9 @@ WTresibox  <- df %>%
 
 legend_title <- "fitness"
 
+df_plot <- df %>% mutate(parameter=`fit_P0`) 
+wrapper(df_plot, 'graph/FP_fit_P0_heatmap.png')
+
 df_plot <- df %>% mutate(parameter=`fit_Calu3_noAb`) 
 wrapper(df_plot, 'graph/FP_fit_Calu3_noAb_heatmap.png')
 

@@ -36,6 +36,8 @@ def wrapper(count_file, freq_cutoff):
         if 'mut' not in colname:
             df = count_to_freq(df, colname)
     df['avg_ipt_freq'] = (df['Rep1_ipt_freq']+df['Rep2_ipt_freq'])/2
+    df = fitness_calculate(df, 'Rep1', freq_cutoff, 'P0')
+    df = fitness_calculate(df, 'Rep2', freq_cutoff, 'P0')
     df = fitness_calculate(df, 'Rep1', freq_cutoff, 'Calu3_noAb')
     df = fitness_calculate(df, 'Rep2', freq_cutoff, 'Calu3_noAb')
     df = fitness_calculate(df, 'Rep1', freq_cutoff, 'E6_noAb')
@@ -48,6 +50,7 @@ def wrapper(count_file, freq_cutoff):
     df = fitness_calculate(df, 'Rep2', freq_cutoff, 'Calu3_CoV44-79')
     df = fitness_calculate(df, 'Rep1', freq_cutoff, 'E6_CoV44-79')
     df = fitness_calculate(df, 'Rep2', freq_cutoff, 'E6_CoV44-79')
+    df['fit_P0'] = (df['fit_P0_Rep1'] + df['fit_P0_Rep2'])/2
     df['fit_Calu3_noAb'] = (df['fit_Calu3_noAb_Rep1'] + df['fit_Calu3_noAb_Rep2'])/2
     df['fit_E6_noAb'] = (df['fit_E6_noAb_Rep1'] + df['fit_E6_noAb_Rep2'])/2
     df['fit_Calu3_CoV44-62'] = (df['fit_Calu3_CoV44-62_Rep1'] + df['fit_Calu3_CoV44-62_Rep2'])/2
@@ -70,13 +73,15 @@ def main():
     df_by_resi = df_by_resi[df_by_resi['mut_class'] != 'WT']
     df_by_resi = df_by_resi[df_by_resi['mut_class'] != 'silent']
     df_by_resi = df_by_resi[df_by_resi['mut_class'] != 'nonsense']
+    df_by_resi_mean_P0  = df_by_resi.groupby('resi')['fit_P0'].mean().reset_index(name='mean_fit_P0')
     df_by_resi_mean_Calu3_noAb  = df_by_resi.groupby('resi')['fit_Calu3_noAb'].mean().reset_index(name='mean_fit_Calu3_noAb')
     df_by_resi_mean_E6_noAb  = df_by_resi.groupby('resi')['fit_E6_noAb'].mean().reset_index(name='mean_fit_E6_noAb')
     df_by_resi_mean_Calu3_CoV44_62  = df_by_resi.groupby('resi')['fit_Calu3_CoV44-62'].mean().reset_index(name='mean_fit_Calu3_CoV44-62')
     df_by_resi_mean_E6_CoV44_62  = df_by_resi.groupby('resi')['fit_E6_CoV44-62'].mean().reset_index(name='mean_fit_E6_CoV44-62')
     df_by_resi_mean_Calu3_CoV44_79  = df_by_resi.groupby('resi')['fit_Calu3_CoV44-79'].mean().reset_index(name='mean_fit_Calu3_CoV44-79')
     df_by_resi_mean_E6_CoV44_79  = df_by_resi.groupby('resi')['fit_E6_CoV44-79'].mean().reset_index(name='mean_fit_E6_CoV44-79')
-    df_by_resi_mean = pd.merge(df_by_resi_mean_Calu3_noAb, df_by_resi_mean_E6_noAb, on='resi', how='outer')
+    df_by_resi_mean = pd.merge(df_by_resi_mean_P0, df_by_resi_mean_Calu3_noAb, on='resi', how='outer')
+    df_by_resi_mean = pd.merge(df_by_resi_mean, df_by_resi_mean_E6_noAb, on='resi', how='outer')
     df_by_resi_mean = pd.merge(df_by_resi_mean, df_by_resi_mean_Calu3_CoV44_62, on='resi', how='outer')
     df_by_resi_mean = pd.merge(df_by_resi_mean, df_by_resi_mean_E6_CoV44_62, on='resi', how='outer')
     df_by_resi_mean = pd.merge(df_by_resi_mean, df_by_resi_mean_Calu3_CoV44_79, on='resi', how='outer')
@@ -86,7 +91,7 @@ def main():
     df_by_resi = pd.merge(all_resi, df_by_resi, on='resi', how='outer')
     df_by_resi = df_by_resi.sort_values(by='resi', key=lambda x:x.str[1::].astype(int))
     df_by_resi['pos'] = df_by_resi['resi'].str[1::].astype(int)
-    df_by_resi = df_by_resi[['resi','pos','count','mean_fit_Calu3_noAb','mean_fit_E6_noAb',
+    df_by_resi = df_by_resi[['resi','pos','count','mean_fit_P0','mean_fit_Calu3_noAb','mean_fit_E6_noAb',
                              'mean_fit_Calu3_CoV44-62','mean_fit_E6_CoV44-62',
                              'mean_fit_Calu3_CoV44-79','mean_fit_E6_CoV44-79']]
     print ('writing: %s' % outfile_2)
